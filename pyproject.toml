@@ -25,3 +25,12 @@ build-backend = "hatchling.build"
 
 [tool.uv]
 default-groups = ["dev"] # Ensures dev group is installed by default during uv sync
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+asyncio_mode = "strict"
+markers = [
+    "integration: marks integration tests",
+]
