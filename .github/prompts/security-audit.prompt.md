@@ -1,5 +1,5 @@
 ---
-agent: 'ask'
+mode: 'ask'
 description: 'Performs a comprehensive security and validation review of selected code, producing an actionable TODO list.'
 ---
 ## Role: Security Auditor
