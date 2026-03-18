@@ -5,7 +5,7 @@
 
 ## 🎯 Prerequisites and Developer Responsibility
 
-The training is based on a [**simple FastAPI application**](https://fastapi.tiangolo.com), manageable by any engineer familiar with foundational programming concepts. We expect everyone to **explore the capabilities and limitations of GitHub Copilot**. You'll learn how to prompt effectively, use agentic features safely, and validate generated code.
+The training is based on a [**FastAPI application**](https://fastapi.tiangolo.com), manageable by any engineer familiar with foundational programming concepts. We expect everyone to **explore the capabilities and limitations of GitHub Copilot**. You'll learn how to prompt effectively, use agentic features safely, and validate generated code.
 
 We encourage you to discuss actively with your colleagues during the session, and **manifest your new learned skills** by continuing to practice the concepts outside of the classroom.
 
@@ -44,10 +44,10 @@ Run the following in the project root to install `uv`, sync the environment, and
 cd app
 pip install --upgrade uv
 uv sync
-uv run uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+uv run uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
 ```
 
-The Swagger UI will now be available at: http://127.0.0.1:8000/docs
+The Swagger UI will now be available at: http://127.0.0.1:8001/docs
 
 ---
 

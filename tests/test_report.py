@@ -4,6 +4,32 @@ from app.main import app
 
 
 @pytest.mark.asyncio
+async def test_get_status_returns_ok():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        response = await ac.get("/status")
+
+    assert response.status_code == 200
+    assert response.json() == {"status": "ok"}
+
+
+@pytest.mark.asyncio
+async def test_get_all_tasks_returns_list_of_tasks():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        response = await ac.get("/tasks")
+
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) >= 1
+    assert "task_id" in data[0]
+    assert "title" in data[0]
+    assert "status" in data[0]
+    assert "hours_spent" in data[0]
+
+
+@pytest.mark.asyncio
 async def test_get_productivity_report():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as ac:
@@ -58,3 +84,15 @@ async def test_get_task_status_returns_404_for_missing_task():
     assert response.status_code == 404
     data = response.json()
     assert "detail" in data
+
+
+@pytest.mark.asyncio
+async def test_get_task_status_returns_status_for_existing_task():
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as ac:
+        response = await ac.get("/task/1/status")
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["task_id"] == 1
+    assert data["status"] in {"pending", "in_progress", "complete"}
