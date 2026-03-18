@@ -26,7 +26,19 @@ class ProductivityReport(BaseModel):
 
 
 class TaskCompletionMetrics(BaseModel):
-    """Metrics related to task completion."""
+    """Metrics focused on completion progress."""
     total_tasks: int
     completed_tasks: int
     completion_rate: float
+
+
+class TaskLogResponse(BaseModel):
+    """Response returned when a task is logged."""
+    message: str
+    task_id: int
+
+
+class TaskStatusResponse(BaseModel):
+    """Response returned when querying a task status."""
+    task_id: int
+    status: TaskStatus
