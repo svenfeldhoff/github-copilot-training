@@ -25,3 +25,7 @@ build-backend = "hatchling.build"
 
 [tool.uv]
 default-groups = ["dev"] # Ensures dev group is installed by default during uv sync
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
